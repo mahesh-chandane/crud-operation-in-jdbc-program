@@ -30,7 +30,7 @@ public class All_Crud_Operation
 				{ 
 				 PreparedStatement ps=con.prepareStatement("insert into city(id,name,population,place,river)values(?,?,?,?,?)");
          //first create a table of city =
-	//(create city(id int(50)primary key, name varchar(100) not null, population int(50)not null, place varchar(100)not null, river varchar(100)not null  ); 
+	//(create table city(id int(50)primary key, name varchar(100) not null, population int(50)not null, place varchar(100)not null, river varchar(100)not null  ); 
 				 System.out.println("Enter your city id");
 				 int id=sc.nextInt();
 				 
