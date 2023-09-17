@@ -1,4 +1,4 @@
-package jdbc.Prepared;
+package jdbc.Prepared;       //  create your system package
 import java.util.Scanner;
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -12,8 +12,9 @@ public class All_Crud_Operation
 
 	  public static void main(String[] args) throws ClassNotFoundException, SQLException
 	   {
-		   Class.forName("com.mysql.cj.jdbc.Driver");
-		Connection con=DriverManager.getConnection("jdbc:mysql://localhost:3306/jdbc","root","Mahesh@123");
+		        Class.forName("com.mysql.cj.jdbc.Driver");
+		        Connection con=DriverManager.getConnection("jdbc:mysql://localhost:3306/jdbc","root","Mahesh@123"); 
+		   // create your Database in using MySQL(for ex-jdbc) and enter your mysql username and password for ex-("root","Mahesh@123")
 			Scanner sc=new Scanner(System.in);
 			boolean b=true;
 			
@@ -23,24 +24,26 @@ public class All_Crud_Operation
 			System.out.println("1.insert data, 2.fetch data, 3.update the data, 4.delete the data, 5.Exit");	
 				System.out.println("Enter an option");
 				int option=sc.nextInt();
-				switch(option)
+		switch(option)
 				{
-				case 1:
+		       case 1:
 				{ 
-				 PreparedStatement ps=con.prepareStatement("insert into city(id,name,population,place, river)values(?,?,?,?,?)");
-				 System.out.println("Enter of city id");
+				 PreparedStatement ps=con.prepareStatement("insert into city(id,name,population,place,river)values(?,?,?,?,?)");
+         //first create a table of city =
+	//(create city(id int(50)primary key, name varchar(100) not null, population int(50)not null, place varchar(100)not null, river varchar(100)not null  ); 
+				 System.out.println("Enter your city id");
 				 int id=sc.nextInt();
 				 
-				 System.out.println("Enter of city name");
+				 System.out.println("Enter your city name");
                  String name=sc.next();
                  
-                 System.out.println("Enter of city population");
+                 System.out.println("Enter your city population");
                  int population=sc.nextInt();
                  
-                 System.out.println("Enter of city place");
+                 System.out.println("Enter your city place");
                  String place=sc.next();
                  
-                 System.out.println("Enter of city river");
+                 System.out.println("Enter your city river");
                  String river=sc.next();
                  
                  ps.setInt(1, id);
@@ -50,11 +53,10 @@ public class All_Crud_Operation
                  ps.setString(5, river);
                  ps.execute();
                  ps.addBatch();
-//				   con.close();
-				   System.out.println("values inserted successfully");
-					System.out.println("------------------------------------");
-				   break;
-				  
+
+		 System.out.println("values inserted successfully");
+		 System.out.println("------------------------------------");
+				   break;  
 				}
 				
 				case 2:
@@ -79,12 +81,13 @@ public class All_Crud_Operation
 						 System.out.println("river: "+river);
 						
 						 System.out.println("show all data"); 
-							System.out.println("------------------------------------");
-						
-					   }break;
+						 System.out.println("------------------------------------");
+					   }
+					break;
 					}
+						
 				case 3:{
-					PreparedStatement ps=con.prepareStatement("update city set id=?,name=?,population=?,place=?,river=?  where id=?");
+				    PreparedStatement ps=con.prepareStatement("update city set id=?,name=?,population=?,place=?,river=?  where id=?");
 				    System.out.println("******enter row id******");
 				    int a=sc.nextInt();
 				    System.out.println("enter updated student id,name,population,place,river ");
@@ -118,24 +121,21 @@ public class All_Crud_Operation
 					System.out.println("------------------------------------");
 				}
 				break;
+						
 				case 4:{
-				    PreparedStatement ps=con.prepareStatement("delete from city  where id=?");
+				   PreparedStatement ps=con.prepareStatement("delete from city  where id=?");
 				   System.out.println("enter an id");
 				   int id=sc.nextInt();
 				   ps.setInt(1, id);
 				   ps.execute();
-//				   con.close();
 				   System.out.println("delete values successfully");
-					System.out.println("------------------------------------");
-
+				   System.out.println("------------------------------------")
 				   break;
 				}
 				
 				case 5:{
 					System.out.println("***thank you see you soon***");
 					System.exit(0);
-					
-//					con.close();
 					break;
 				}
 				default:
