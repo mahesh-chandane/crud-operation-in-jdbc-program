@@ -90,7 +90,7 @@ public class All_Crud_Operation
 				    PreparedStatement ps=con.prepareStatement("update city set id=?,name=?,population=?,place=?,river=?  where id=?");
 				    System.out.println("******enter row id******");
 				    int a=sc.nextInt();
-				    System.out.println("enter updated student id,name,population,place,river ");
+				    System.out.println("enter updated city id,name,population,place,river ");
 				    ps.setInt(6, a);
 				    
 				   int id=sc.nextInt();
@@ -134,7 +134,7 @@ public class All_Crud_Operation
 				}
 				
 				case 5:{
-					System.out.println("***thank you see you soon***");
+					System.out.println("***thank you ! see you soon***");
 					System.exit(0);
 					break;
 				}
